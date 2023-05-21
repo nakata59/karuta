@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Bus lines</h1>
+
+<table class="bus-line-table">
+  <thead>
+    <tr>
+      <th class="name">Name</th>
+      <th class="operation">操作</th>
+    </tr>
+  </thead>
+  <tbody id="bus_lines">
+  </tbody>
+</table>
+
+<%= link_to "New bus line", new_bus_line_path %>
+
+<%= turbo_stream_from 'bus_lines' %>
+
+<% @bus_lines.each do |bus_line| %>
+  <%= turbo_stream.append(:bus_lines, partial: "list_item", locals: { bus_line: bus_line }) %>
+<% end %>

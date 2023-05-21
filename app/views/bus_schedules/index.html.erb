@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Bus schedules</h1>
+
+<%= render partial: 'schedule_table', locals: { bus_schedules: nil } %>
+
+<%= link_to "New bus schedule", new_bus_schedule_path %>
