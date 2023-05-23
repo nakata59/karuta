@@ -1,7 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<div id="questions">
-</div>
+<table class="question-table">
+  <thead>
+    <tr>
+      <th class="name"></th>
+      <th class="operation"></th>
+    </tr>
+  </thead>
+  <tbody id="questions">
+  </tbody>
+</table>
 
 <%= turbo_stream_from 'questions' %>
 
@@ -9,11 +17,11 @@
   <%= turbo_stream.append(:questions, partial: "list_question", locals: { question: question }) %>
 <% end %>
 
-<table class="player-table">
+<table class="player-table bg-yellow-100" style = "display: flex;">
   <thead>
     <tr>
-      <th class="name">Name</th>
-      <th class="operation">操作</th>
+    <th class="name">Name</th>
+    <th class="operation">操作</th>
     </tr>
   </thead>
   <tbody id="players">
@@ -27,14 +35,13 @@
 <% end %>
 
 
-<table class="bus-line-table">
+<table class="bus-line-table" style="background-color: brown;">
   <thead>
     <tr>
-      <th class="name">Name</th>
-      <th class="operation">操作</th>
+
     </tr>
   </thead>
-  <tbody id="bus_lines">
+  <tbody id="bus_lines" style = "display: flex; flex-wrap: wrap;">
   </tbody>
 </table>
 
@@ -45,7 +52,4 @@
 <% @bus_lines.each do |bus_line| %>
   <%= turbo_stream.append(:bus_lines, partial: "list_item", locals: { bus_line: bus_line }) %>
 <% end %>
-<%= link_to 'アンカーテキスト', controller: "players", action: "entry" %>
-#<a href = "http://localhost:3000/players/entry" class="dialogue">
-aaaa
-</a>
+<%= link_to '準備', controller: "players", action: "entry" %>

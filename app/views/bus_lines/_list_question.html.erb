@@ -1,9 +1,9 @@
+
 <tr id="<%= dom_id question %>">
-  <td class="name"><%= question.serial %></td>
-  <div onclick= "buttClick()">再生</div>
+  <div><td class="name">第<%= question.number %>問</td></div>
+  <div><td><div onclick= "buttClick()">再生</div></td></div>
   <%= audio_tag("soundpoem#{question.serial}.wav", id: 'btn_audio') %>
-  <td class="operation"><%= question.number %></td>
-  <%= link_to 'アンカーテキスト', controller: "questions", action: "next" %>
+  <td><%= link_to 'アンカーテキスト', controller: "questions", action: "next" %></td>
 </tr>
 
 
