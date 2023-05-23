@@ -1,4 +1,9 @@
 <tr id="<%= dom_id bus_line %>">
   <td class="name"><%= bus_line.name %></td>
-  <td class="operation"><%= link_to "Show this bus line", bus_line, data: { turbo_frame: '_top' } %></td>
+  <td class="operation">
+  <%= button_to bus_line, method: :delete do %>
+    <% img_name = "sumple#{bus_line.serial}.jpg" %>
+    <%= image_tag img_name %>
+    <% end %>
+  </td>
 </tr>

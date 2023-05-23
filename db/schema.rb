@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_094807) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_141712) do
   create_table "bus_lines", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "serial"
   end
 
   create_table "bus_schedules", force: :cascade do |t|
@@ -25,4 +26,45 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_094807) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "karuta", force: :cascade do |t|
+    t.integer "serial"
+    t.integer "title_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title_id"], name: "index_karuta_on_title_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.text "name"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "situation"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer "serial"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "titles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "karuta", "titles"
 end

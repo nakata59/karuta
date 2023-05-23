@@ -1,6 +1,6 @@
 <style>
   .selected{
-    background: #000000
+    display: none
   }
 </style>
 <%= turbo_frame_tag 'bus_schedules', src: bus_schedules.nil? ? list_bus_schedules_path : nil do %>
@@ -23,8 +23,6 @@
         <tr data-schedule-target="row" data-action="click->schedule#selectRow">
           <td class="departure-hour"><%= bus_schedule.departure_hour %></td>
           <td class="departure-minute"><%= bus_schedule.departure_minute %></td>
-          <td class="line"><%= bus_schedule.bus_line_id %></td>
-          <td class="operation"><%= link_to "Show this bus schedule", bus_schedule, data: { turbo_frame: '_top' } %></td>
         </tr>
         <% end %>
       <% end %>

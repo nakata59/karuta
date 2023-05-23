@@ -1,6 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Bus lines</h1>
+<div id="questions">
+</div>
+
+<%= turbo_stream_from 'questions' %>
+
+<% @questions.each do |question| %>
+  <%= turbo_stream.append(:questions, partial: "list_question", locals: { question: question }) %>
+<% end %>
+
+<table class="player-table">
+  <thead>
+    <tr>
+      <th class="name">Name</th>
+      <th class="operation">操作</th>
+    </tr>
+  </thead>
+  <tbody id="players">
+  </tbody>
+</table>
+
+<%= turbo_stream_from 'players' %>
+
+<% @players.each do |player| %>
+  <%= turbo_stream.append(:players, partial: "list_player", locals: { player: player }) %>
+<% end %>
+
 
 <table class="bus-line-table">
   <thead>
@@ -20,3 +45,7 @@
 <% @bus_lines.each do |bus_line| %>
   <%= turbo_stream.append(:bus_lines, partial: "list_item", locals: { bus_line: bus_line }) %>
 <% end %>
+<%= link_to 'アンカーテキスト', controller: "players", action: "entry" %>
+#<a href = "http://localhost:3000/players/entry" class="dialogue">
+aaaa
+</a>
