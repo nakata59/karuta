@@ -7,6 +7,21 @@
 #   Character.create(name: "Luke", movie: movies.first)
 Karutum.create!(
     [
+       {
+        serial: 1,
+        title_id: 1
+
+       }, 
+       {
+        serial: 2,
+        title_id: 1
+
+        },
+        {
+        serial: 3,
+        title_id: 1
+
+        },
         {
           serial: 11,
           title_id: 1
@@ -14,6 +29,26 @@ Karutum.create!(
         },
         {
           serial: 12,
+          title_id: 1
+
+        },
+        {
+          serial: 31,
+          title_id: 1
+
+        },
+        {
+          serial: 33,
+          title_id: 1
+
+        },
+        {
+          serial: 35,
+          title_id: 1
+
+        },
+        {
+          serial: 36,
           title_id: 1
 
         },
