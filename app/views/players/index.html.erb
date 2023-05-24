@@ -1,0 +1,9 @@
+<div>
+ プレイヤー1: <%= @player.name %>
+ <%= link_to '参加する', controller: "players", action: "first_join" %>
+</div>
+
+<div>
+ プレイヤー2: <%= @player2.name %>
+ <%= link_to '参加する', controller: "players", action: "second_join" %>
+</div>

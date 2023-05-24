@@ -3,7 +3,7 @@
   <div><td class="name">第<%= question.number %>問</td></div>
   <div><td><div onclick= "buttClick()">再生</div></td></div>
   <%= audio_tag("soundpoem#{question.serial}.wav", id: 'btn_audio') %>
-  <td><%= link_to 'アンカーテキスト', controller: "questions", action: "next" %></td>
+  <td><%= link_to '次の問題へ', controller: "questions", action: "next" %></td>
 </tr>
 
 

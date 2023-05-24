@@ -42,7 +42,7 @@ class BusLinesController < ApplicationController
   def update
     respond_to do |format|
       if @bus_line.update(bus_line_params)
-        format.html { redirect_to bus_line_url(@bus_line), notice: "Bus line was successfully updated." }
+        format.html { redirect_to bus_line_url(@bus_line), notice: "正解" }
         format.json { render :show, status: :ok, location: @bus_line }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,15 +53,14 @@ class BusLinesController < ApplicationController
 
   # DELETE /bus_lines/1 or /bus_lines/1.json
   def destroy
+    @current_player = Player.find_by(name:current_user.name)
     @player = Player.find(1)
     @player2 = Player.find(2)
    if @player.situation == "正常"
     @question = Question.first
     if @bus_line.serial == @question.serial
       @bus_line.destroy
-      @player = Player.find(1)
-      @player.update(score: @player.score += 1, situation: 0)
-      @player2.update(situation: 0)
+      @current_player.update(score: @current_player.score += 1)
       Player.all.update(situation: 0)
       respond_to do |format|
         format.html { redirect_to bus_lines_url, notice: "Bus line was successfully destroyed." }
@@ -69,7 +68,7 @@ class BusLinesController < ApplicationController
       end
     else
      p "お手隙"
-     @player.update(situation: 2)
+     @current_player.update(situation: 2)
     end
    else
      p "まて"
