@@ -23,7 +23,12 @@ class BusLinesController < ApplicationController
 
   # POST /bus_lines or /bus_lines.json
   def create
-    @karutas = Karutum.all
+    if params[:bus_line][:kazu].to_i == 0
+      @kazu = 20
+    else
+      @kazu = params[:bus_line][:kazu].to_i
+    end
+    @karutas = Karutum.all.sample(@kazu)
     @karutas.each do |karuta|
       BusLine.create(serial:karuta.serial)
       #respond_to do |format|
@@ -56,7 +61,7 @@ class BusLinesController < ApplicationController
     @current_player = Player.find_by(name:current_user.name)
     @player = Player.find(1)
     @player2 = Player.find(2)
-   if @player.situation == "正常"
+   if @current_player.situation == "正常"
     @question = Question.first
     if @bus_line.serial == @question.serial
       @bus_line.destroy

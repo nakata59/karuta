@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :list_bus_schedules
   resources :players, only: %i[new index]
+  root 'users#new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/players/first_join', to: 'players#first_join'
   get '/players/second_join', to: 'players#second_join'
