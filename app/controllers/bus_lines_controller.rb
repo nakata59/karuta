@@ -28,7 +28,6 @@ class BusLinesController < ApplicationController
     else
       @kazu = params[:bus_line][:kazu].to_i
     end
-    byebug
     @karutas = Card.where(title_id: params[:bus_line][:title_id].to_i).all.sample(@kazu)
     @karutas.each do |karuta|
       BusLine.create(serial:karuta.serial,image_url:karuta.image_url,audio_url:karuta.audio_url,title_id:params[:bus_line][:title_id].to_i)

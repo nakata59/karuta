@@ -9,7 +9,6 @@ class CardsController < ApplicationController
 
     def create
       @card = Card.new(card_params)
-      byebug
         if @card.save
           redirect_to title_url(@card)
         else
