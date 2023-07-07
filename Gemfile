@@ -82,3 +82,4 @@ gem 'sorcery'
 
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'dotenv-rails', groups: [:development, :test]
