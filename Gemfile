@@ -81,3 +81,4 @@ gem 'cssbundling-rails'
 gem 'sorcery'
 
 gem 'carrierwave'
+gem 'fog-aws'
