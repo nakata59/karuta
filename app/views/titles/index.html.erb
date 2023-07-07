@@ -1,0 +1,5 @@
+<% @titles.each do |title| %>
+    <div>
+      <%= link_to title.name, "#{request.url}/#{title.id}" %>
+    </div>
+<% end %>

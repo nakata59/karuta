@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :bus_lines
   resources :users, only: %i[new create]
   resources :list_bus_schedules
+  resources :titles do
+    resources :karutas
+    resources :cards
+  end
+  resources :cards
   resources :players, only: %i[new index]
   root 'users#new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

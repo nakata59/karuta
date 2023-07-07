@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_23_141712) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_06_143325) do
   create_table "bus_lines", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "serial"
+    t.string "audio_url"
+    t.string "image_url"
+    t.integer "title_id"
   end
 
   create_table "bus_schedules", force: :cascade do |t|
@@ -26,12 +29,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_141712) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.integer "serial"
+    t.string "image"
+    t.string "audio"
+    t.integer "title_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "karuta", force: :cascade do |t|
     t.integer "serial"
     t.integer "title_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "audio"
+    t.string "image"
     t.index ["title_id"], name: "index_karuta_on_title_id"
   end
 

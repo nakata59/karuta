@@ -2,7 +2,7 @@
 <tr id="<%= dom_id question %>">
   <div><td class="name">第<%= question.number %>問</td></div>
   <div><td><div onclick= "buttClick()">再生</div></td></div>
-  <%= audio_tag("soundpoem#{question.serial}.wav", id: 'btn_audio') %>
+  <%= audio_tag(Card.where(title_id: BusLine.first.title_id,serial:Question.first.serial)[0].audio.url, id: 'btn_audio') %>
   <td><%= link_to '次の問題へ', controller: "questions", action: "next" %></td>
 </tr>
 

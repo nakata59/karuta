@@ -1,0 +1,11 @@
+<%= @card.id %>
+<%= @card.image.class %>
+<%= audio_tag(@card.audio.url, id: 'btn_audio') %>
+<%= image_tag @card.image.url, style:"width: 20vw",onclick:"buttonClick()" %>
+
+<script>
+function buttonClick(){
+  document.getElementById('btn_audio').currentTime = 0; //連続クリックに対応
+  document.getElementById('btn_audio').play(); //クリックしたら音を再生
+}
+</script>

@@ -28,9 +28,10 @@ class BusLinesController < ApplicationController
     else
       @kazu = params[:bus_line][:kazu].to_i
     end
-    @karutas = Karutum.all.sample(@kazu)
+    byebug
+    @karutas = Card.where(title_id: params[:bus_line][:title_id].to_i).all.sample(@kazu)
     @karutas.each do |karuta|
-      BusLine.create(serial:karuta.serial)
+      BusLine.create(serial:karuta.serial,image_url:karuta.image_url,audio_url:karuta.audio_url,title_id:params[:bus_line][:title_id].to_i)
       #respond_to do |format|
         #if @bus_line.save
           #format.html { redirect_to bus_line_url(@bus_line), notice: "Bus line was successfully created." }

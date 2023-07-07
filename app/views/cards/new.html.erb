@@ -1,0 +1,17 @@
+<%= form_with model: @card, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :serial %>
+    <%= f.text_field :serial, class: 'form-control' %>
+  </div>
+  <div>
+    <%= f.label :audio %>
+    <%= f.file_field :audio %>
+  </div>
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <% /titles\// === request.url.gsub("/cards/new","") %>
+  <%= f.hidden_field :title_id, :value => $'.to_i %>
+  <%= f.submit '登録', class: 'btn btn-primary' %>
+<% end %>
