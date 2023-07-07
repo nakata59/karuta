@@ -5,9 +5,6 @@ require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
   if Rails.env.production?
-    p "テスト"
-    p "#{ENV['AWS_ACCESS_KEY_ID']}"
-    p "ENV['AWS_SECRET_ACCESS_KEY']"
     config.storage = :fog
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
