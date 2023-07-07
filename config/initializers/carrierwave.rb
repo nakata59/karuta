@@ -1,8 +1,7 @@
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
-require 'dotenv'
-Dotenv.load
+
 
 CarrierWave.configure do |config|
   if Rails.env.production?
