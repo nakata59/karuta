@@ -1,8 +1,7 @@
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
-require 'dotenv'
-Dotenv.load
+
 
 CarrierWave.configure do |config|
 
@@ -10,8 +9,8 @@ CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: ENV['AWS_ACCESS_KEY'],
-    aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    aws_access_key_id: 'AKIAWOZ74Q4CSWUAC3TE',
+    aws_secret_access_key: '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',
     region: 'ap-northeast-1'
     }
 
