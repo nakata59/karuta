@@ -5,7 +5,7 @@ class TitlesController < ApplicationController
 
     def show
       @title = Title.find(params[:id])
-      @Karutas = Karutum.where(title_id: @title.id)
+      @Karutas = Card.where(title_id: @title.id)
     end
 
     def new

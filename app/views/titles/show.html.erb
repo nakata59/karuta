@@ -2,6 +2,7 @@
 <%= link_to "カルタを追加する", "#{request.url}/cards/new" %>
 <% @Karutas.each do |karuta| %>
   <div>
-    <%= karuta.id %>
+    <%= link_to karuta.id, "#{request.url}/cards/#{karuta.id}" %>
   </div>
 <% end %>
+

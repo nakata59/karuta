@@ -4,12 +4,16 @@
     <%= f.text_field :serial, class: 'form-control' %>
   </div>
   <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div>
     <%= f.label :audio %>
     <%= f.file_field :audio %>
   </div>
   <div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :audio_text %>
+    <%= f.text_area :audio_text %>
   </div>
   <% /titles\// === request.url.gsub("/cards/new","") %>
   <%= f.hidden_field :title_id, :value => $'.to_i %>
