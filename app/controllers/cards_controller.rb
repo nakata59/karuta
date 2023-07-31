@@ -8,7 +8,7 @@ class CardsController < ApplicationController
     end
 
     def create
-    if params[:card][:audio_text] != nil
+    if params[:card][:audio_text] != ""
       api_key = ENV['IBM_KEY']
       text = params[:card][:audio_text]
       voice = "ja-JP_EmiVoice"
@@ -34,7 +34,7 @@ class CardsController < ApplicationController
         render :new
       end
     else
-      @card = Card.new(card_params)
+      @card = Card.new(serial: params[:card][:serial],title_id: params[:card][:title_id],image: params[:card][:image],audio: params[:card][:audio])
         if @card.save
           redirect_to title_url(@card)
         else
