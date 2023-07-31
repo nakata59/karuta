@@ -28,13 +28,11 @@ class CardsController < ApplicationController
       
       @card = Card.new(serial: params[:card][:serial],title_id: params[:card][:title_id],image: params[:card][:image])
       @card.audio = File.open("public/#{output_file}")
-      byebug
       if @card.save
         redirect_to title_url(@card)
       else
         render :new
       end
-      byebug
     else
       @card = Card.new(card_params)
         if @card.save
