@@ -58,17 +58,16 @@ class BusLinesController < ApplicationController
 
   # DELETE /bus_lines/1 or /bus_lines/1.json
   def destroy
-    @current_player = Player.find_by(name:current_user.name)
-    @player = Player.find(1)
-    @player2 = Player.find(2)
+    @current_player = Player.find_by(room_id: params[:room_id],name:current_user.name)
+    /bus_lines/ === request.url
    if @current_player.situation == "正常"
     @question = Question.first
     if @bus_line.serial == @question.serial
       @bus_line.destroy
       @current_player.update(score: @current_player.score += 1)
-      Player.all.update(situation: 0)
+      Player.where(room_id: params[:room_id]).all.update(situation: 0)
       respond_to do |format|
-        format.html { redirect_to bus_lines_url, notice: "Bus line was successfully destroyed." }
+        format.html { redirect_to "#{$`}rooms/#{params[:room_id]}", notice: "Bus line was successfully destroyed." }
         format.json { head :no_content }
       end
     else

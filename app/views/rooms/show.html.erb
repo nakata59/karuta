@@ -1,0 +1,50 @@
+<table class="question-table">
+  <thead>
+    <tr>
+      <th class="name"></th>
+      <th class="operation"></th>
+    </tr>
+  </thead>
+  <tbody id="questions">
+  </tbody>
+</table>
+
+<%= turbo_stream_from 'questions' %>
+
+<% @questions.each do |question| %>
+  <%= turbo_stream.append(:questions, partial: "list_question", locals: { question: question }) %>
+<% end %>
+
+<table class="player-table bg-yellow-100" style = "display: flex;">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody id="players">
+  </tbody>
+</table>
+
+<%= turbo_stream_from 'players' %>
+
+<% @players.each do |player| %>
+  <%= turbo_stream.append(:players, partial: "list_player", locals: { player: player }) %>
+<% end %>
+
+
+<table class="bus-line-table" style="background-color: brown;">
+  <thead>
+    <tr>
+
+    </tr>
+  </thead>
+  <tbody id="bus_lines" style = "display: flex; flex-wrap: wrap;">
+  </tbody>
+</table>
+
+
+<%= turbo_stream_from 'bus_lines' %>
+
+<% @bus_lines.each do |bus_line| %>
+  <%= turbo_stream.append(:bus_lines, partial: "list_item", locals: { bus_line: bus_line }) %>
+<% end %>
+<%= link_to '準備', { controller: "players", action: "entry", room_id: @room.id } %>

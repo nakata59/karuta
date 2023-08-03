@@ -7,12 +7,14 @@ Rails.application.routes.draw do
     resources :karutas
     resources :cards
   end
+  resources :rooms
   resources :cards
   resources :players, only: %i[new index]
   root 'users#new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/players/first_join', to: 'players#first_join'
   get '/players/second_join', to: 'players#second_join'
+  get '/players/join', to: 'players#join'
   get '/players/entry', to: 'players#entry'
   get '/questions/entry', to: 'questions#next'
   get '/login', to: 'user_sessions#new'

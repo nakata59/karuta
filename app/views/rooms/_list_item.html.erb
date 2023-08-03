@@ -1,0 +1,8 @@
+<tr id="<%= dom_id bus_line %>">
+  <td class="name"><%= bus_line.name %></td>
+  <td class="operation">
+  <%= button_to bus_line, { method: :delete, params: { room_id: @room.id } } do %>
+    <%= image_tag bus_line.image_url ,style: "width:15vw;"%>
+    <% end %>
+  </td>
+</tr>

@@ -16,12 +16,16 @@ class PlayersController < ApplicationController
       redirect_to bus_lines_url
     end
 
+    def join
+      Player.create(name: current_user.name,room_id: params[:room_id],score: 0,situation: 0)
+      /players/ === request.url
+      redirect_to "#{$`}rooms/#{params[:room_id]}"
+    end
+
     def entry
         @bus_lines = BusLine.all
-        @player = Player.find(1)
-        @player2 = Player.find(2)
-        @player.update(situation: 1)
-        @player2.update(situation: 1)
-        redirect_to bus_lines_url
+        Player.where(room_id:params[:room_id]).update(situation:1)
+        /players/ === request.url
+        redirect_to "#{$`}rooms/#{params[:room_id]}"
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_06_143325) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_133357) do
   create_table "bus_lines", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_143325) do
     t.string "audio_url"
     t.string "image_url"
     t.integer "title_id"
+    t.integer "room_id", null: false
+    t.index ["room_id"], name: "index_bus_lines_on_room_id"
   end
 
   create_table "bus_schedules", force: :cascade do |t|
@@ -55,11 +57,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_143325) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "situation"
+    t.integer "room_id", null: false
+    t.index ["room_id"], name: "index_players_on_room_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.integer "serial"
     t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "room_id", null: false
+    t.index ["room_id"], name: "index_questions_on_room_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,5 +92,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_143325) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "bus_lines", "rooms"
   add_foreign_key "karuta", "titles"
+  add_foreign_key "players", "rooms"
+  add_foreign_key "questions", "rooms"
 end

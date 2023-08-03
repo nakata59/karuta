@@ -1,0 +1,6 @@
+<% @rooms.each do |room| %>
+  <div>
+    <%= link_to room.name, room_path(room.id) %>
+    <%= link_to '参加する', { controller: "players", action: "join", room_id: room.id } %>
+  </div>
+<% end %>
