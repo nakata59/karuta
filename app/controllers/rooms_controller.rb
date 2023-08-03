@@ -14,9 +14,8 @@ class RoomsController < ApplicationController
     def create
       @room = Room.new
       @room.update(name:params[:room][:name])
-      @player = Player.create(name: current_user.name,score: 0,situation: 0)
-      @player.update(room_id: @room.id)
       if @room.save
+        Player.create(name: current_user.name,score: 0,situation: 0,room_id: @room.id)
         if params[:room][:kazu].to_i == 0
             @kazu = 20
           else
