@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
       @room = Room.find(params[:id]) 
       @bus_lines = BusLine.where(room_id:@room.id)
       @players = Player.where(room_id:@room.id).all
-      @questions = Question.all
+      @questions = Question.where(room_id: params[:id])
     end
     def new
       @room = Room.new
@@ -14,8 +14,8 @@ class RoomsController < ApplicationController
     def create
       @room = Room.new
       @room.update(name:params[:room][:name])
-      Player.create(name: current_user.name,room_id: @room.id,score: 0,situation: 0)
-      
+      @player = Player.create(name: current_user.name,score: 0,situation: 0)
+      @player.update(room_id: @room.id)
       if @room.save
         if params[:room][:kazu].to_i == 0
             @kazu = 20
